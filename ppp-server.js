@@ -1,12 +1,11 @@
 const http = require('http');
 const { delay } = require('./tree-cli');
 
-const hostname = '127.0.0.1';
-const port = 3111;
-const ppAddr = `192.168.1.150:${port}`;
+const ppPort = 3112;
+const ppAddr = `192.168.1.145:${port}`;
 
-// http.get(ppAddr, () => {
-  // delay();
-// });
+http.get(ppAddr, (req, res) => {
+  delay();
+});
 
 delay();
