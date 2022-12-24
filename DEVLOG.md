@@ -25,3 +25,9 @@ My other big concern is printing it/animating it where it stays in the same plac
 3:25 PM
 
 Oh yeah I'm tired af today so this code will be shit
+
+4:59 PM
+
+it's done, took longer than I would have liked
+
+minor errors here and there, mostly stuff like copying into nano for some reason breaks the code due to line breaks
