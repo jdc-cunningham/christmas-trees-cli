@@ -1,11 +1,15 @@
 const cliWidth = 80;
 
+const m = 2; // multiplier
+
 const treePipes = [
   [7, 1], // start, number of pipes
   [6, 3],
   [5, 5],
   [4, 7],
-  [3, 9]
+  [3, 9],
+  [2, 11],
+  [1, 13],
 ];
 
 const RED = '\033[0;31m';
@@ -26,12 +30,18 @@ const randId = () => randomIntFromInterval(0, 3);
 
 const randomColorPipe = () => `${colors[randId()]}|${NC}`
 
-const renderTree = () => treePipes.forEach((row, rowId) => {
+const renderTree = (treeLayer) => treePipes.forEach((row, rowId) => {
+  if (treeLayer === 1 && rowId > treePipes.length - 3) {
+    return;
+  } else if (treeLayer === 2 && rowId > treePipes.length - 2) {
+    return;
+  }
+
   let rowPipes = '';
 
-  for (let i = 0; i < 16; i++) {
-    const startPipe = row[0];
-    const pipes = row[1];
+  for (let i = 0; i < m * 15; i++) {
+    const startPipe = m * row[0];
+    const pipes = m* row[1];
 
     if (i < startPipe || i >= (startPipe + pipes)) {
       rowPipes += `${DARK}|${NC}`;
@@ -49,7 +59,9 @@ const renderTree = () => treePipes.forEach((row, rowId) => {
 
 const delay = (sec) => { 
   setTimeout(() => {
-    renderTree();
+    renderTree(1);
+    renderTree(2);
+    renderTree(3);
     delay();
   }, sec || 1000);
 };
